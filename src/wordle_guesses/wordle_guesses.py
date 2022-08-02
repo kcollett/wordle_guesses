@@ -18,6 +18,7 @@ def char_range(start_char, end_char):
 BLANK_CHAR = "_"
 CHANGE_CHAR = "."
 
+# XXX: change _LONG options from -option to --option
 EXCLUDE_OPT = "-e"
 EXCLUDE_OPT_LONG = "-exclude"
 INCLUDE_OPT = "-i"
@@ -26,6 +27,8 @@ CASE_OPT = "-c"
 CASE_OPT_LONG = "-case"
 NUM_OPT = "-n"
 NUM_OPT_LONG = "-num_guesses"
+VERSION_OPT = "-v"
+VERSION_OPT_LONG = "-version"
 
 CASE_OPT_TITLE = "title"
 CASE_OPT_UPPER = "upper"
@@ -120,6 +123,12 @@ def parse_args(argv: list[str]) -> CommandArgs:
         required=False,
         help=f"""specify the number of guesses per line of output.
         The default is {DEFAULT_NUM_GUESSES_PER_LINE}.""",
+    )
+    parser.add_argument(
+        VERSION_OPT,
+        VERSION_OPT_LONG,
+        action="version",
+        version="%(prog)s 0.1.1", # XXX: must be a way to not hard-code this
     )
 
     def usage() -> None:
