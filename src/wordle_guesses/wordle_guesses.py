@@ -6,6 +6,7 @@ import re
 import sys
 from dataclasses import dataclass
 from enum import Enum
+from wordle_guesses import __version__
 
 
 # Code snarfed from https://stackoverflow.com/questions/7001144/range-over-character-in-python
@@ -128,7 +129,7 @@ def parse_args(argv: list[str]) -> CommandArgs:
         VERSION_OPT,
         VERSION_OPT_LONG,
         action="version",
-        version="%(prog)s 0.1.1", # XXX: must be a way to not hard-code this
+        version=f"%(prog)s {__version__}",
     )
 
     def usage() -> None:

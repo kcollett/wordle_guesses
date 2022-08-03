@@ -11,7 +11,6 @@ from wordle_guesses.wordle_guesses import (
     CASE_OPT_LOWER,
     CASE_OPT_TITLE,
     CASE_OPT_UPPER,
-    VERSION_OPT,
     CommandArgs,
     OutputCase,
     parse_args,
