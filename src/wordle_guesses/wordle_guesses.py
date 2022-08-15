@@ -31,7 +31,7 @@ CASE_OPT_LONG = "--case"
 NUM_OPT = "-n"
 NUM_OPT_LONG = "--num_guesses"
 VERSION_OPT = "-v"
-VERSION_OPT_LONG = "-version"
+VERSION_OPT_LONG = "--version"
 
 CASE_OPT_TITLE = "title"
 CASE_OPT_UPPER = "upper"

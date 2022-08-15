@@ -11,6 +11,8 @@ from wordle_guesses.wordle_guesses import (
     CASE_OPT_LOWER,
     CASE_OPT_TITLE,
     CASE_OPT_UPPER,
+    VERSION_OPT,
+    VERSION_OPT_LONG,
     CommandArgs,
     OutputCase,
     parse_args,
@@ -67,6 +69,14 @@ def test_parse_args_bad_case(template) -> None:
         parse_args([CASE_OPT, template])  # option without case
     with pytest.raises(SystemExit) as _:
         parse_args([CASE_OPT, "snake", template])  # invalid case
+
+
+def test_parse_args_version(template) -> None:
+    """Test parse_args() with a version argument."""
+    with pytest.raises(SystemExit) as _:
+        parse_args([VERSION_OPT])
+    with pytest.raises(SystemExit) as _:
+        parse_args([VERSION_OPT_LONG, "snake", template])  # invalid case
 
 
 def test_parse_args_template_only(template) -> None:
