@@ -6,6 +6,7 @@ import re
 import sys
 from dataclasses import dataclass
 from enum import Enum
+
 # from wordle_guesses import __version__
 
 
@@ -21,15 +22,14 @@ __version__ = "0.1.1"
 BLANK_CHAR = "_"
 CHANGE_CHAR = "."
 
-# XXX: change _LONG options from -option to --option
 EXCLUDE_OPT = "-e"
-EXCLUDE_OPT_LONG = "-exclude"
+EXCLUDE_OPT_LONG = "--exclude"
 INCLUDE_OPT = "-i"
-INCLUDE_OPT_LONG = "-include"
+INCLUDE_OPT_LONG = "--include"
 CASE_OPT = "-c"
-CASE_OPT_LONG = "-case"
+CASE_OPT_LONG = "--case"
 NUM_OPT = "-n"
-NUM_OPT_LONG = "-num_guesses"
+NUM_OPT_LONG = "--num_guesses"
 VERSION_OPT = "-v"
 VERSION_OPT_LONG = "-version"
 
@@ -154,8 +154,8 @@ def parse_args(argv: list[str]) -> CommandArgs:
 
     # built set of letters to exclude from iteration
     excluded_letters: set[str] = set()
-    if args.e is not None:
-        excluded_arg = args.e[0].upper()
+    if args.exclude is not None:
+        excluded_arg = args.exclude[0].upper()
         if not excluded_arg.isalpha():
             usage()
         excluded_letters = set(excluded_arg)
@@ -163,8 +163,8 @@ def parse_args(argv: list[str]) -> CommandArgs:
 
     # built set of letters to include in iteration
     included_letters: set[str] = set()
-    if args.i is not None:
-        included_arg = args.i[0].upper()
+    if args.include is not None:
+        included_arg = args.include[0].upper()
         if not included_arg.isalpha():
             usage()
         included_letters = set(included_arg)
@@ -172,14 +172,14 @@ def parse_args(argv: list[str]) -> CommandArgs:
 
     # determine the desired output case
     output_case = OutputCase.TITLE
-    if args.c is not None:
-        output_case = OutputCase(args.c)
-    logging.debug("case_selection=%s", output_case)
+    if args.case is not None:
+        output_case = OutputCase(args.case)
+    logging.debug("output_case=%s", output_case)
 
     # determine the desired number of guesses per line of output
     num_guesses = DEFAULT_NUM_GUESSES_PER_LINE
-    if args.n is not None:
-        num_guesses = args.n
+    if args.num_guesses is not None:
+        num_guesses = args.num_guesses
     logging.debug("num_guesses=%s", num_guesses)
 
     return CommandArgs(
