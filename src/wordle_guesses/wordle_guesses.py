@@ -6,7 +6,7 @@ import re
 import sys
 from dataclasses import dataclass
 from enum import Enum
-from wordle_guesses import __version__
+# from wordle_guesses import __version__
 
 
 # Code snarfed from https://stackoverflow.com/questions/7001144/range-over-character-in-python
@@ -15,6 +15,8 @@ def char_range(start_char, end_char):
     for char in range(ord(start_char), ord(end_char) + 1):
         yield chr(char)
 
+
+__version__ = "0.1.1"
 
 BLANK_CHAR = "_"
 CHANGE_CHAR = "."
