@@ -1,3 +1,4 @@
+# -*- mode: gitignore; -*-
 notebooks/
 .vscode/
 
@@ -133,3 +134,6 @@ dmypy.json
 
 # MacOS stuff
 .DS_Store
+
+# Emacs stuff
+*~
