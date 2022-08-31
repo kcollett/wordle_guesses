@@ -271,7 +271,7 @@ def main() -> None:
 
     guesses = list_guesses(args.template, args.excluded_letters, args.included_letters)
 
-    guesses = map(args.output_case.transform, guesses)
+    guesses = list(map(args.output_case.transform, guesses))
 
     guess_lines = _marshall_guesses(guesses, args.num_guesses_per_line)
     _print_guesses(guess_lines)
