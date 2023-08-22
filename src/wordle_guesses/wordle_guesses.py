@@ -17,6 +17,7 @@ def char_range(start_char, end_char):
         yield chr(char)
 
 
+# TODO: Figure out how to move this back to __init__.py
 __version__ = "0.1.1"
 
 BLANK_CHAR = "_"
@@ -265,7 +266,11 @@ def _print_guesses(guesses: OutputGuessLines) -> None:
 
 def main() -> None:
     """Simple main()"""
-    logging.basicConfig(level=logging.ERROR)
+    logging.basicConfig(
+        level=logging.ERROR,
+        format="%(asctime)s %(levelname)s %(message)s",
+        datefmt="%Y-%m-%dT%H:%M:%S%z",
+    )
 
     args = parse_args(sys.argv[1:])
 
